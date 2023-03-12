@@ -8,5 +8,4 @@ public class Constants {
     public static String PlayerIsNullErrorMessage = "Player is null (probably left)";
     public static String FileNotFoundErrorMessage = "File not found: config\\mods\\settings.json";
     public static long serverID = 805380967447134209l;
-
 }
