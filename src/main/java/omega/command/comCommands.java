@@ -53,6 +53,7 @@ public class comCommands implements MessageCreateListener {
     public void onMessageCreate(MessageCreateEvent event){
         String[] incoming_msg = event.getMessageContent().split("\\s+");
         Role moderator = mainData.discRoles.get("role_id");
+
         if (event.getMessageAuthor().isBotUser()) return;
         switch (incoming_msg[0]){
             case prefix + "chat":
@@ -61,7 +62,7 @@ public class comCommands implements MessageCreateListener {
                 event.getChannel().sendMessage("Sent :white_check_mark:");
                 break;
             case prefix + "peepee":
-                //ping command displaying ms
+                // Ping command displaying ms
                 long time = System.currentTimeMillis();
                 event.getChannel().sendMessage("poopoo!").thenAcceptAsync(message -> {
                     long ping = System.currentTimeMillis() - time;
