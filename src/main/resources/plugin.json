@@ -1,0 +1,13 @@
+{
+  "name": "OmegaPlugin",
+  "minGameVersion": "141.2",
+  "displayName": "OmegaPlugin",
+  "author": "Volas171 & Redstonneur1256",
+  "description": "The main plugin for OmegaHub servers. Includes a lot of useful features.",
+  "version": "2.3",
+  "main": "omega.OmegaPlugin",
+  "repo": "OmegaHub/OmegaPlugin",
+  "dependencies": [
+    "!mod-library"
+  ]
+}

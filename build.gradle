@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id "org.sonarqube" version "3.5.0.2730"
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "Omega-Network_OmegaPlugin_AYYfMoaq2k4vs7aXpSe6"
+    }
+}
+
+group 'com.omegahub'
+version '2.0'
+
+ext {
+    mindustryVersion = 'v141'
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://www.jitpack.io' }
+    maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+
+}
+
+dependencies {
+    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    implementation 'org.javacord:javacord:3.7.0'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'de.mkammerer:argon2-jvm:2.11'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.6'
+    compileOnly 'com.github.Redstonneur1256.Mindustry-ModLib:Mod:1.2.1'
+
+    implementation group: 'org.json', name: 'json', version: '20220924'
+}
+
+jar {
+    version = null
+    //libsDirName = '../config/mods'
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
