@@ -1,7 +1,7 @@
 # OmegaHubPlugin
 OmegaHub's main plugin
 
-very bad code, but it works, any contributions are welcome.
+Very bad code, but it works, any contributions are welcome.
 
 ### TODO
 * [ ] Move all of this crap hardcoded stuff into the config file
