@@ -13,7 +13,7 @@ group 'com.omegahub'
 version '2.0'
 
 ext {
-    mindustryVersion = 'v141'
+    mindustryVersion = 'v141.2'
 }
 
 tasks.withType(JavaCompile) {
