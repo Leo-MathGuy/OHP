@@ -1,30 +1,37 @@
 package omega.command;
 
-//mindustry + arc
-
+// Arc
 import arc.Core;
 import arc.struct.ObjectMap;
 import arc.util.Strings;
+
+// Mindustry
 import mindustry.Vars;
 import mindustry.gen.Call;
 import mindustry.gen.Groups;
 import mindustry.gen.Player;
 import mindustry.net.Administration;
 import mindustry.world.modules.ItemModule;
+
+// Omega
 import omega.OmegaPlugin;
 import omega.database.dataHandler;
 import omega.utils.Find;
+
+// Javacord
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
+// Java
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+// Static
 import static omega.utils.Constants.prefix;
 import static omega.utils.Logger.discLogErr;
 import static omega.utils.discordUtils.hasPermission;
