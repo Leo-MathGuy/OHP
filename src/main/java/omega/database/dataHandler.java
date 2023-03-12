@@ -3,7 +3,9 @@ package omega.database;
 import arc.Core;
 import arc.util.Log;
 import arc.util.Strings;
+
 import mindustry.gen.Player;
+
 import org.json.simple.JSONObject;
 
 import java.sql.*;
@@ -175,18 +177,18 @@ public class dataHandler {
             Class.forName("org.mariadb.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             sql = conn.prepareStatement("INSERT INTO servers(ingameName, username, password, uuid, ip, banned, rank, xp, joindate, playtime, discord_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-            sql.setString(1, p.name);
-            sql.setString(2, username);
-            sql.setString(3, password);
-            sql.setString(4, p.uuid());
-            sql.setString(5, p.con.address);
-            sql.setBoolean(6, false);
-            sql.setString(7, role);
-            sql.setInt(8, 0);
-            sql.setString(9, Long.toString(time));
-            sql.setInt(10, 0);
-            sql.setString(11, "0");
-            sql.executeUpdate();
+            sql.setString(1, p.name)
+               .setString(2, username)
+               .setString(3, password)
+               .setString(4, p.uuid())
+               .setString(5, p.con.address)
+               .setBoolean(6, false)
+               .setString(7, role)
+               .setInt(8, 0)
+               .setString(9, Long.toString(time))
+               .setInt(10, 0)
+               .setString(11, "0")
+               .executeUpdate();
             Log.info("Successfully Registered!" + Strings.stripColors(p.name));
             sql.close();
             conn.close();
