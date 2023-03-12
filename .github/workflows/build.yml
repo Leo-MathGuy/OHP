@@ -21,4 +21,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: OmegaDiscordPlugin.jar
-        path: build/libs/discordplugin.jar
+        path: build/libs/OmegaHubPlugin.jar
