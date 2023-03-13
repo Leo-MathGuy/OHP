@@ -1,21 +1,14 @@
 package omega;
 
-// Arc
 import arc.ApplicationListener;
 import arc.Core;
 import arc.Events;
 import arc.files.Fi;
 import arc.struct.ObjectMap;
 import arc.util.*;
-
-// Argon
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
-
-// Modlib
 import fr.redstonneur1256.modlib.net.NetworkDebuggable;
-
-// Mindustry
 import mindustry.game.EventType;
 import mindustry.game.EventType.PlayerJoin;
 import mindustry.gen.Call;
@@ -24,29 +17,22 @@ import mindustry.gen.Player;
 import mindustry.gen.Sounds;
 import mindustry.mod.Plugin;
 import mindustry.net.Packets;
-
-// Omega
 import omega.command.comCommands;
 import omega.command.mapCommands;
 import omega.command.serverCommands;
 import omega.database.dataHandler;
 import omega.utils.API;
-
-// Javacord
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
-
-// Json
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-// Java
 import java.awt.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -63,9 +49,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.BiFunction;
 
-// Statics
 import static arc.util.Log.err;
 import static mindustry.Vars.netServer;
 import static mindustry.Vars.player;
@@ -205,33 +189,18 @@ public class OmegaPlugin extends Plugin {
             }
         }
 
-        final BiFunction<String, String, String> parse_formatter = (String hexcolor, String unicode) -> {
-            return "[#" + hexcolor + "]<[accent]" + unicode + "[white]/" + mCH.check_xp(p) + "[#" + hexcolor + "]> [coral][[" + p.coloredName() + format + messag;
-        };
-
         switch (mCH.check_rank(p)) {
-            case "Omega":
-                netServer.chatFormatter = (player, message) -> parse_formatter("FFFF00","\uF308");
-            case "Volas":
-                netServer.chatFormatter = (player, message) -> parse_formatter("17e2e2","\uE80E");
-            case "Gamma+":
-                netServer.chatFormatter = (player, message) -> parse_formatter("24abc6","\uE88E");
-            case "ae": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("FEF508","\uF281");
-            case "Gamma": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("D2272e","\uE80F");
-            case "Beta": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("153f9a","\uE84D");
-            case "Epsilon": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("0be86f","\uE86E");
-            case "Verified": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("229a76","\uE800");
-            case "Donator": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("E6dd44","\uE810");
-            case "Player": 
-                netServer.chatFormatter = (player, message) -> parse_formatter("82ad3a","\uE871");
-            default: 
-                netServer.chatFormatter = (player, message) -> "[#A6a7a8]<[accent]\uE872[white][#A6a7a8]> [coral][[" + p.coloredName() + format + messag;
+            case "Omega" -> netServer.chatFormatter = (player, message) -> "[#FFFF00]<[accent]\uF308[white]/" + mCH.check_xp(p) + "[#FFFF00]> [coral][[" + p.coloredName() + format + messag;
+            case "Volas" -> netServer.chatFormatter = (player, message) -> "[#17e2e2]<[accent]\uE80E[white]/" + mCH.check_xp(p) + "[#17e2e2]> [coral][[" + p.coloredName() + format + messag;
+            case "Gamma+" -> netServer.chatFormatter = (player, message) -> "[#24abc6]<[accent]\uE88E[white]/" + mCH.check_xp(p) + "[#24abc6]> [coral][[" + p.coloredName() + format + messag;
+            case "ae" -> netServer.chatFormatter = (player, message) -> "[#FEF508]<[accent]\uF281[white]/" + mCH.check_xp(p) + "[#FEF508]> [coral][[" + p.coloredName() + format + messag;
+            case "Gamma" -> netServer.chatFormatter = (player, message) -> "[#D2272e]<[accent]\uE80F[white]/" + mCH.check_xp(p) + "[#D2272e]> [coral][[" + p.coloredName() + format + messag;
+            case "Beta" -> netServer.chatFormatter = (player, message) -> "[#153f9a]<[accent]\uE84D[white]/" + mCH.check_xp(p) + "[#153f9a]> [coral][[" + p.coloredName() + format + messag;
+            case "Epsilon" -> netServer.chatFormatter = (player, message) -> "[#0be86f]<[accent]\uE86E[white]/" + mCH.check_xp(p) + "[#0be86f]> [coral][[" + p.coloredName() + format + messag;
+            case "Verified" -> netServer.chatFormatter = (player, message) -> "[#229a76]<[accent]\uE800[white]/" + mCH.check_xp(p) + "[#229a76]> [coral][[" + p.coloredName() + format + messag;
+            case "Donator" -> netServer.chatFormatter = (player, message) -> "[#E6dd44]<[accent]\uE810[white]/" + mCH.check_xp(p) + "[#E6dd44]> [coral][[" + p.coloredName() + format + messag;
+            case "Player" -> netServer.chatFormatter = (player, message) -> "[#82ad3a]<[accent]\uE871[white]/" + mCH.check_xp(p) + "[#82ad3a]> [coral][[" + p.coloredName() + format + messag;
+            default -> netServer.chatFormatter = (player, message) -> "[#A6a7a8]<[accent]\uE872[white][#A6a7a8]> [coral][[" + p.coloredName() + format + messag;
         }
     }
 
