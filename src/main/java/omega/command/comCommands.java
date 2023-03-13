@@ -1,37 +1,30 @@
 package omega.command;
 
-// Arc
+//mindustry + arc
+
 import arc.Core;
 import arc.struct.ObjectMap;
 import arc.util.Strings;
-
-// Mindustry
 import mindustry.Vars;
 import mindustry.gen.Call;
 import mindustry.gen.Groups;
 import mindustry.gen.Player;
 import mindustry.net.Administration;
 import mindustry.world.modules.ItemModule;
-
-// Omega
 import omega.OmegaPlugin;
 import omega.database.dataHandler;
 import omega.utils.Find;
-
-// Javacord
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
-// Java
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-// Static
 import static omega.utils.Constants.prefix;
 import static omega.utils.Logger.discLogErr;
 import static omega.utils.discordUtils.hasPermission;
@@ -53,7 +46,6 @@ public class comCommands implements MessageCreateListener {
     public void onMessageCreate(MessageCreateEvent event){
         String[] incoming_msg = event.getMessageContent().split("\\s+");
         Role moderator = mainData.discRoles.get("role_id");
-
         if (event.getMessageAuthor().isBotUser()) return;
         switch (incoming_msg[0]){
             case prefix + "chat":
@@ -62,7 +54,7 @@ public class comCommands implements MessageCreateListener {
                 event.getChannel().sendMessage("Sent :white_check_mark:");
                 break;
             case prefix + "peepee":
-                // Ping command displaying ms
+                //ping command displaying ms
                 long time = System.currentTimeMillis();
                 event.getChannel().sendMessage("poopoo!").thenAcceptAsync(message -> {
                     long ping = System.currentTimeMillis() - time;
